@@ -1,6 +1,8 @@
 import { useState} from 'react';
 import { Button } from '@mui/material';
+import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
+
 
 function App() {
   const [calc, setCalc] = useState("");
@@ -54,29 +56,31 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <div className="calculator">
-        <div className="display">
-          { result ? <span>({result})</span> : '' } &nbsp;
-          { calc || "0"}
-        </div>
-        <Stack className="operators" direction="row" spacing={0.15}>
-          <Button variant="contained" onClick={() => updateCalc('/')}>/</Button>
-          <Button variant="contained" onClick={() => updateCalc('*')}>*</Button>
-          <Button variant="contained" onClick={() => updateCalc('+')}>+</Button>
-          <Button variant="contained" onClick={() => updateCalc('-')}>-</Button>
+    <Box sx={{ backgroundColor: 'primary.dark'}} >
+      <div className="App">
+        <div className="calculator">
+          <div className="display">
+            { result ? <span>({result})</span> : '' } &nbsp;
+            { calc || "0"}
+          </div>
+          <Stack className="operators" direction="row" spacing={0.15}>
+            <Button variant="contained" onClick={() => updateCalc('/')}>/</Button>
+            <Button variant="contained" onClick={() => updateCalc('*')}>*</Button>
+            <Button variant="contained" onClick={() => updateCalc('+')}>+</Button>
+            <Button variant="contained" onClick={() => updateCalc('-')}>-</Button>
 
-          <Button variant="contained" onClick={deleteLast}>DEL</Button>
-        </Stack>
+            <Button variant="contained" onClick={deleteLast}>DEL</Button>
+          </Stack>
 
-        <div className="digits">
-          { createdigits() }
-          <Button variant="outlined" onClick={() => updateCalc('0')}>0</Button>
-          <Button variant="outlined" onClick={() => updateCalc('.')}>.</Button>
-          <Button variant="outlined" onClick={calculate}>=</Button>
+          <div className="digits">
+            { createdigits() }
+            <Button variant="outlined" onClick={() => updateCalc('0')}>0</Button>
+            <Button variant="outlined" onClick={() => updateCalc('.')}>.</Button>
+            <Button variant="outlined" onClick={calculate}>=</Button>
+          </div>
         </div>
       </div>
-    </div>
+    </Box>
   );
 }
 
